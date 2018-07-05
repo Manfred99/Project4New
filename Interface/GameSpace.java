@@ -29,7 +29,7 @@ import project4.Principal;
  */
 public class GameSpace {
 
-    private Mosaic mosaicCanvas1 = new Mosaic("5x5");
+    private Mosaic mosaicCanvas1;
     
     private GridPane grid;
     private VBox chatPane;
@@ -48,6 +48,7 @@ public class GameSpace {
     private BufferMemoryGame sharedMemory;
     
     private void initComponents() {
+        
         this.grid = new GridPane();
         this.chatPane = new VBox();
         this.ta_TextToSend = new TextArea();
@@ -69,7 +70,22 @@ public class GameSpace {
     
     public VBox pane() {
         initComponents();
-        
+        if(sharedMemory.getMatrixNaval().length==3){
+            mosaicCanvas1 = new Mosaic("3x3");
+        }else if(sharedMemory.getMatrixNaval().length==5){
+            mosaicCanvas1 = new Mosaic("5x5");
+            
+        }
+        mosaicCanvas1.drawImages();
+                        String result = "";
+                int matrix[][] = sharedMemory.getMatrixNaval();
+                for (int i = 0; i < matrix.length; i++) {
+                    for (int j = 0; j < matrix[0].length; j++) {
+                        result += matrix[i][j];
+                    }
+                    result += "\n";
+                }
+                System.out.println(result);
         VBox vboxPrin = new VBox();
         MenuBar mb_Menu = new MenuBar();
         Menu m_Options = new Menu("Options");

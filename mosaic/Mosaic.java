@@ -74,6 +74,7 @@ public class Mosaic extends Canvas {
            }
        }
    }
+   
     public void draw() {
 //        GraphicsContext gc = super.getGraphicsContext2D();
 //        gc.setFill(Paint.valueOf("BLUE"));
@@ -169,18 +170,27 @@ public class Mosaic extends Canvas {
         return d1;
     }//drawTable
     
-    public void drawImage(Image image, int coordenate1, int coordenate2){
-//        if (this.dimentions == 300) {
-//            drawTable(100, 300, 300, super.getGraphicsContext2D());
-//            //important.drawTable(100, 400, 400, super.getGraphicsContext2D());
-//        } else if (this.dimentions == 500) {
-//            drawTable(100, 500, 500, super.getGraphicsContext2D());
-//            //important.drawTable(100, 500, 500, super.getGraphicsContext2D());
-//        }
-        
+    
+    public void drawImages(){
         GraphicsContext g = getGraphicsContext2D();
-        g.drawImage(image, coordenate1, coordenate2);
-        
+        int[][] matrixShips = sharedMemory.getMatrixNaval();
+        BlockNum temp;
+                    for (int i = 0; i < matrixShips.length; i++) {
+                        for (int j = 0; j < matrixShips.length; j++) {
+                            temp = getCoordinates()[i][j];
+                            if(matrixShips[i][j]==1){
+                                g.drawImage(sharedMemory.getSprite().get(1), temp.getB(), temp.getA());
+                            }else if(matrixShips[i][j]==2){
+                                g.drawImage(sharedMemory.getSprite().get(2), temp.getB(), temp.getA());
+                            }else if(matrixShips[i][j]==3){
+                                g.drawImage(sharedMemory.getSprite().get(0), temp.getB(), temp.getA());
+                            }
+                           //System.out.println(temp);
+                            
+
+                        }
+                    }
+        //g.drawImage(image, coordenate1, coordenate2);
     }
     public void mouseClickToDrawImage(){
          if (this.dimentions == 300) {
@@ -190,6 +200,7 @@ public class Mosaic extends Canvas {
             drawTable(100, 500, 500, super.getGraphicsContext2D());
             //important.drawTable(100, 500, 500, super.getGraphicsContext2D());
         }
+         
         this.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

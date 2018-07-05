@@ -5,6 +5,7 @@
  */
 package Domain;
 
+import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 /**
@@ -20,6 +21,7 @@ public class BufferMemoryGame {
     private  static Image imageToPaint;
     private static int matrixNaval[][];
     private static int ship;
+    private static ArrayList<Image> sprite;
     public BufferMemoryGame() {
         i=0;
         j=0;
@@ -28,6 +30,14 @@ public class BufferMemoryGame {
         haveImageToPaint = false;
     }
 
+    public  ArrayList<Image> getSprite() {
+        return sprite;
+    }
+
+    public  void setSprite(ArrayList<Image> sprite) {
+        BufferMemoryGame.sprite = sprite;
+    }
+    
     public  int getShip() {
         return ship;
     }

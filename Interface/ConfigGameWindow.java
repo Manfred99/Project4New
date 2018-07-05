@@ -199,7 +199,7 @@ public class ConfigGameWindow extends Images {
                 }
                 sharedMemory.setHaveImageToPaint(true);
                 ArrayList<Image> sprite = super.getSprite();
-                positionImage = 2;
+                positionImage = 3;
                 sharedMemory.setImageToPaint(sprite.get(0));
                 sharedMemory.setShip(positionImage);
                 children--;
@@ -242,7 +242,7 @@ public class ConfigGameWindow extends Images {
                 }
                 sharedMemory.setHaveImageToPaint(true);
                 ArrayList<Image> sprite = super.getSprite();
-                positionImage = 1;
+                positionImage = 2;
                 sharedMemory.setImageToPaint(sprite.get(2));
                 sharedMemory.setShip(positionImage);
                 if (children <0) {
@@ -254,6 +254,7 @@ public class ConfigGameWindow extends Images {
             btn_play.setOnAction((event) -> {
                 //Me carga la matriz a la memoria compartida
                 mosaic1.getMatrixToOtherClass();
+                sharedMemory.setSprite(this.getSprite());
 //                String result = "";
 //                int matrix[][] = sharedMemory.getMatrixNaval();
 //                for (int i = 0; i < matrix.length; i++) {
